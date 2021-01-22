@@ -83,5 +83,5 @@ unnamedESP.MouseButton1Down:connect(function()
 end)
 
 exit.MouseButton1Down:connect(function()
-	maingui.Destroy()
+	maingui:Destroy()
 end)
