@@ -41,6 +41,7 @@ main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 main.Position = UDim2.new(0.391143918, 0, 0.493411422, 0)
 main.Size = UDim2.new(0, 236, 0, 81)
 main.Visible = false
+main.Draggable = true
 
 title.Name = "title"
 title.Parent = main
@@ -104,3 +105,4 @@ end)
 esp.MouseButton1Down:connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua"))()
 end)
+
