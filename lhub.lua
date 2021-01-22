@@ -25,6 +25,7 @@ hub.Parent = lhub
 hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 hub.Position = UDim2.new(0.468980789, 0, 0.363103956, 0)
 hub.Size = UDim2.new(0, 266, 0, 182)
+hub.Visible = false
 
 title.Name = "title"
 title.Parent = hub
