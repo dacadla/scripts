@@ -115,7 +115,7 @@ OpenButton.MouseButton1Down:connect(function()
 end)
 exit.MouseButton1Down:connect(function()
 	openFrame.Visible = true
-	hub.Visible = true
+	hub.Visible = false
 end)
 owlhub.MouseButton1Down:connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/ZinityDrops/OwlHubLink/master/OwlHubBack.lua"))()
