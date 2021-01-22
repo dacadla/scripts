@@ -25,6 +25,7 @@ hub.Parent = lhub
 hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 hub.Position = UDim2.new(0.468980789, 0, 0.363103956, 0)
 hub.Size = UDim2.new(0, 266, 0, 182)
+hub.Visible = false
 
 title.Name = "title"
 title.Parent = hub
@@ -113,7 +114,8 @@ OpenButton.MouseButton1Down:connect(function()
 	hub.Visible = true
 end)
 exit.MouseButton1Down:connect(function()
-	lhub:Destroy()
+	openFrame.Visible = true
+	hub.Visible = true
 end)
 owlhub.MouseButton1Down:connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/ZinityDrops/OwlHubLink/master/OwlHubBack.lua"))()
