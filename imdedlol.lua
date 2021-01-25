@@ -18,11 +18,12 @@ local fastspeed = Instance.new("TextButton")
 local highjump = Instance.new("TextButton")
 local iy = Instance.new("TextButton")
 local infjump = Instance.new("TextButton")
+local exit = Instance.new("TextButton")
 
 --Properties:
 
 imdedlol.Name = "imdedlol"
-imdedlol.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+imdedlol.Parent = game.CoreGui
 imdedlol.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 opentab.Name = "opentab"
@@ -45,12 +46,12 @@ openButton.TextWrapped = true
 
 main.Name = "main"
 main.Parent = imdedlol
+main.Active = true
 main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-main.Position = UDim2.new(0.679558039, 0, 0.326500714, 0)
+main.Position = UDim2.new(0.467771679, 0, 0.407027811, 0)
 main.Size = UDim2.new(0, 309, 0, 236)
 main.Visible = false
-main.Active = true
-main.draggable = true
+main.Draggable = true
 
 border.Name = "border"
 border.Parent = main
@@ -62,20 +63,22 @@ border.Size = UDim2.new(0, 28, 0, 244)
 title.Name = "title"
 title.Parent = main
 title.BackgroundColor3 = Color3.fromRGB(90, 163, 44)
-title.Position = UDim2.new(0, 0, -0.0796915144, 0)
-title.Size = UDim2.new(0, 307, 0, 31)
+title.Position = UDim2.new(0, 0, -0.0796914846, 0)
+title.Size = UDim2.new(0, 309, 0, 31)
+title.Draggable = true
 
 titletext.Name = "titletext"
 titletext.Parent = title
 titletext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 titletext.BackgroundTransparency = 1.000
-titletext.Size = UDim2.new(0, 307, 0, 31)
+titletext.Size = UDim2.new(0, 309, 0, 31)
 titletext.Font = Enum.Font.Code
 titletext.Text = "im_ded_lol"
 titletext.TextColor3 = Color3.fromRGB(255, 255, 255)
 titletext.TextScaled = true
 titletext.TextSize = 14.000
 titletext.TextWrapped = true
+titletext.Draggable = true
 
 fly.Name = "fly"
 fly.Parent = main
@@ -152,7 +155,7 @@ highjump.TextWrapped = true
 iy.Name = "iy"
 iy.Parent = main
 iy.BackgroundColor3 = Color3.fromRGB(102, 185, 51)
-iy.Position = UDim2.new(0.58676374, 0, 0.723313689, 0)
+iy.Position = UDim2.new(0.577054977, 0, 0.714839101, 0)
 iy.Size = UDim2.new(0, 115, 0, 44)
 iy.Font = Enum.Font.Code
 iy.Text = "inf yield"
@@ -173,6 +176,18 @@ infjump.TextScaled = true
 infjump.TextSize = 14.000
 infjump.TextWrapped = true
 
+exit.Name = "exit"
+exit.Parent = main
+exit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+exit.BackgroundTransparency = 1.000
+exit.Position = UDim2.new(0.919093847, 0, -0.0635593235, 0)
+exit.Size = UDim2.new(0, 23, 0, 21)
+exit.Font = Enum.Font.Code
+exit.Text = "X"
+exit.TextColor3 = Color3.fromRGB(255, 0, 0)
+exit.TextSize = 14.000
+
+
 fly.MouseButton1Down:connect(function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/ELjBzevW"))()
 end)
@@ -182,7 +197,31 @@ owlhub.MouseButton1Down:connect(function()
 end)
 
 ctrlclicktp.MouseButton1Down:connect(function()
-	loadstring(game:HttpGet("https://pastebin.com/raw/K07fprGr"))()
+	getfenv().script = Instance.new('Script', ClickTP)
+
+	local UIS = game:GetService("UserInputService")
+	
+	local Player = game.Players.LocalPlayer
+	local Mouse = Player:GetMouse()
+	
+	
+	function GetCharacter()
+	   return game.Players.LocalPlayer.Character
+	end
+	
+	function Teleport(pos)
+	   local Char = GetCharacter()
+	   if Char then
+	       Char:MoveTo(pos)
+	   end
+	end
+	
+	
+	UIS.InputBegan:Connect(function(input)
+	   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+	       Teleport(Mouse.Hit.p)
+	   end
+	end)
 end)
 
 esp.MouseButton1Down:connect(function()
@@ -190,11 +229,11 @@ esp.MouseButton1Down:connect(function()
 end)
 
 fastspeed.MouseButton1Down:connect(function()
-	game.Player.Character.Humanoid.WalkSpeed = 100
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
 end)
 
 highjump.MouseButton1Down:connect(function()
-	game.Player.Character.Humanoid.JumpPower = 500
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = 200
 end)
 
 infjump.MouseButton1Down:connect(function()
@@ -223,3 +262,11 @@ iy.MouseButton1Down:connect(function()
 end)
 
 -- loadstring(game:HttpGet(""))()
+exit.MouseButton1Down:connect(function()
+	opentab.Visible = true
+	main.Visible = false
+end)
+openButton.MouseButton1Down:connect(function()
+	opentab.Visible = false
+	main.Visible = true
+end)
