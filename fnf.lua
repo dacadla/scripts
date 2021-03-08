@@ -27,7 +27,7 @@ local delspeed = main.Slider({
     end,
     Min = 1,
     Max = 100,
-    Def = 20
+    Def = 25
 })
  
 local vim = game:GetService("VirtualInputManager")
